@@ -23,5 +23,11 @@
    "files.autoSave": "afterDelay",
    "workbench.colorTheme": "Visual Studio Dark",
    "terminal.integrated.gpuAcceleration": "canvas",
-   "editor.defaultFormatter": "HookyQR.beautify"
+   "editor.defaultFormatter": "HookyQR.beautify",
+
+   "python.linting.pylintArgs": [
+      "--load-plugins",
+      "pylint_flask_sqlalchemy",
+      "pylint_flask"
+   ]
 }
