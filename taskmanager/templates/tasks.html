@@ -12,17 +12,18 @@
 </div>
 
 <div class="collapsible">
-    {% for task in tasks %}
+    {% for task in tasks | sort(reverse=true, attribute="is_urgent") %}
         <li>
             <div class="collapsible-header light-blue darken-4 white-text">
-                <i class="large material-icons">arrow_drop_down</i><strong>{{ task.task_name }}:&nbsp;</strong>
-                {{ task.due_date }}
-                {% if task.is_urgent == True %}
+                <i class="large material-icons">arrow_drop_down</i>
+                <strong>{{ task.task_name }}:&nbsp;</strong>
+                {{ task.due_date.strftime("%d %B, %Y") }}
+                {% if task.is_urgent %}
                     <i class="fas fa-exclamation-circle light-blue-text"></i>
                 {% endif %}
             </div>
             <div class="collapsible-body">
-                <h4>{{ task.category_id }}</h4>
+                <h4>{{ task.category }}</h4>
                 <p>{{ task.task_description }}</p>
                 <a href="{{ url_for('edit_task', task_id=task.id) }}" class="btn green accent-4">Edit</a>
                 <a href="{{ url_for('delete_task', task_id=task.id) }}" class="btn red">Delete</a>
